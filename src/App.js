@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import Photo from "./Photo";
 import { FaSearch } from "react-icons/fa";
+import "./App.scss";
 
 const clientID = `?client_id=${process.env.REACT_APP_ACCESS_KEY}`;
 
