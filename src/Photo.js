@@ -13,7 +13,7 @@ const Photo = ({
   return (
     <article>
       <div>
-        <img src={regular} alt={alt_description} width="300px" />
+        <img src={regular} alt={alt_description} width="450px" height="300px" />
       </div>
       {/* info div */}
       <div style={{ display: "flex" }}>
