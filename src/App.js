@@ -18,6 +18,7 @@ function App() {
 
   const fetchRef = useRef(true);
   const scrollRef = useRef(true);
+  const pageRef = useRef(true);
 
   const fetchImages = async () => {
     setIsLoading(true);
@@ -57,12 +58,14 @@ function App() {
     setPage(1);
     setPhotos([]);
     fetchImages();
+    pageRef.current = true;
   };
 
   useEffect(() => {
     if (fetchRef.current) {
       fetchRef.current = false;
       fetchImages();
+      pageRef.current = true;
     }
   }, [page]);
 
@@ -72,8 +75,10 @@ function App() {
       const event = window.addEventListener("scroll", () => {
         if (
           !isLoading &&
+          pageRef.current &&
           window.innerHeight + window.scrollY >= document.body.scrollHeight - 2
         ) {
+          pageRef.current = false;
           setPage((prev) => {
             return prev + 1;
           });
