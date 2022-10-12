@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import Photo from "./Photo";
 import { FaSearch } from "react-icons/fa";
 import "./App.scss";
@@ -20,7 +20,7 @@ function App() {
   const scrollRef = useRef(true);
   const pageRef = useRef(true);
 
-  const fetchImages = async () => {
+  const fetchImages = useCallback(async () => {
     setIsLoading(true);
 
     let url;
@@ -50,8 +50,9 @@ function App() {
       console.log(error);
     } finally {
       setIsLoading(false);
+      pageRef.current = true;
     }
-  };
+  }, [page, query]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -67,7 +68,7 @@ function App() {
       fetchImages();
       pageRef.current = true;
     }
-  }, [page]);
+  }, [page, fetchImages]);
 
   useEffect(() => {
     if (scrollRef.current) {
@@ -88,7 +89,7 @@ function App() {
 
       return () => window.removeEventListener("scroll", event);
     }
-  }, []);
+  }, [isLoading]);
 
   return (
     <>
