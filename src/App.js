@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Photo from "./Photo";
 import { FaSearch } from "react-icons/fa";
 import "./App.scss";
@@ -13,6 +13,8 @@ function App() {
   const [photos, setPhotos] = useState([]);
   const [page, setPage] = useState(1);
   const [query, setQuery] = useState("");
+  console.log(photos);
+  console.log(page);
 
   const fetchRef = useRef(true);
   const scrollRef = useRef(true);
@@ -29,6 +31,7 @@ function App() {
     } else {
       url = `${searchURL}${clientID}${urlPage}${urlQuery}`;
     }
+    console.log(url);
 
     try {
       const response = await fetch(url);
@@ -52,6 +55,7 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setPage(1);
+    setPhotos([]);
     fetchImages();
   };
 
@@ -103,8 +107,7 @@ function App() {
       <section>
         <div style={{ display: "flex", flexWrap: "wrap" }}>
           {photos.map((photo, index) => {
-            const { id } = photo;
-            return <Photo key={id} {...photo} />;
+            return <Photo key={index} {...photo} />;
           })}
         </div>
         {isLoading && <h2>Loading...</h2>}
