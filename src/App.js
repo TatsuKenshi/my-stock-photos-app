@@ -94,10 +94,15 @@ function App() {
   return (
     <>
       <header className="App">
-        <h1>MySplash</h1>
-        <p>your number 1 stock photo resource</p>
+        <h1>
+          {" "}
+          <span>one!</span>Splash
+        </h1>
+        <p>
+          Your number <span>one!</span> stock photo resource!
+        </p>
       </header>
-      <section>
+      <section className="formSection">
         <form>
           <input
             type="text"
@@ -110,8 +115,8 @@ function App() {
           </button>
         </form>
       </section>
-      <section>
-        <div style={{ display: "flex", flexWrap: "wrap" }}>
+      <section className="photoSection">
+        <div className="photoDiv">
           {photos.map((photo, index) => {
             return <Photo key={index} {...photo} />;
           })}

@@ -1,4 +1,5 @@
 import React from "react";
+import "./Photo.scss";
 
 const Photo = ({
   urls: { regular },
@@ -12,11 +13,11 @@ const Photo = ({
 }) => {
   return (
     <article>
-      <div>
-        <img src={regular} alt={alt_description} width="450px" height="300px" />
+      <div className="imgDiv">
+        <img src={regular} alt={alt_description} />
       </div>
       {/* info div */}
-      <div style={{ display: "flex" }}>
+      <div className="infoDiv">
         <h4>{name}</h4>
         <p>{likes}</p>
         <a href={portfolio_url}>

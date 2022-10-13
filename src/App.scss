@@ -5,9 +5,67 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color:#fff;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+header {
+  text-align: center;
+  color: darkslategray;
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  p {
+    font-size: 1.5rem;
+  }
+
+  span {
+    color:indianred
+  }
+}
+
+.formSection {
+  width: 90vw;
+  max-width: 1300px;
+  margin: 20px auto 20px auto;
+  padding-left: 10px;
+
+  input {
+    max-width: 450px;
+    height: 1.5rem;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    font-size: 1rem;
+  }
+  input:focus{
+    border-top: none;
+    border-left: none;
+    border-right: none;
+  }
+
+  button {
+    border: none;
+    background: none;
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}
+
+.photoSection {
+  width: 90vw;
+  max-width: 1300px;
+  margin: 20px auto 20px auto;
+
+  .photoDiv {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:flex-start;
+  }
 }
